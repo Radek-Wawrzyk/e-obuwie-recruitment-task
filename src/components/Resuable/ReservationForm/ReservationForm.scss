@@ -4,9 +4,12 @@
   padding: 2rem;
   border: 1px solid $border-color;
   box-shadow: 0 14px 54px rgba(0, 0, 0, 0.16);
+  border-radius: 0.5rem;
 
   &__header {
     margin: 0 0 2rem 0;
+    border-bottom: 1px solid $border-color;
+    padding: 0 0 1.5rem 0;
   }
 
   &__price {

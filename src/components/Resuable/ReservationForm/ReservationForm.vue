@@ -15,6 +15,13 @@
 
     <div class="reservation-form__content">
       <!-- TODO: Calendar component -->
+      <base-button
+        title="Make a reservation"
+        full-size
+        @click="bookReservation()"
+      >
+        {{ buttonText }}
+      </base-button>
     </div>
 
     <footer class="reservation-form__bottom">
@@ -25,11 +32,13 @@
 
 <script>
 import BaseReviews from '@/components/Base/BaseReviews/BaseReviews.vue';
+import BaseButton from '@/components/Base/BaseButton/BaseButton.vue';
 
 export default {
   name: 'ReservationForm',
   components: {
     BaseReviews,
+    BaseButton,
   },
   data: () => ({
 
@@ -49,6 +58,11 @@ export default {
       type: Number,
       required: true,
       default: () => (0),
+    },
+  },
+  computed: {
+    buttonText() {
+      return 'Make a reservation';
     },
   },
   methods: {
