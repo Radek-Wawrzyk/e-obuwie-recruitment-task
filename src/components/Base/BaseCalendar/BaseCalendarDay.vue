@@ -17,10 +17,9 @@ import dayjs from 'dayjs';
 export default {
   name: 'BaseCalendarDay',
   props: {
-    isToday: {
-      type: Boolean,
+    today: {
+      type: String,
       required: false,
-      default: () => (false),
     },
     day: {
       type: Object,
@@ -28,8 +27,11 @@ export default {
     },
   },
   computed: {
-    dayInNumber () {
+    dayInNumber() {
       return dayjs(this.day.date).format('D');
+    },
+    isToday() {
+      return this.day.date === this.today;
     },
   },
 };

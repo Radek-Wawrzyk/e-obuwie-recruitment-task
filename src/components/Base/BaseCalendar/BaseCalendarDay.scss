@@ -10,4 +10,9 @@
   justify-content: center;
   color: $text-color--pale;
   text-align: center;
+
+  &--today {
+    border: 2px solid $brand-primary;
+    border-radius: 50%;
+  }
 }

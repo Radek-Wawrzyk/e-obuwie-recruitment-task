@@ -51,10 +51,10 @@ export default {
       return dayjs().format('YYYY-MM-DD');
     },
     month() {
-      return parseInt(this.selectedDate.format('M'))
+      return parseInt(this.selectedDate.format('M'));
     },
     year() {
-      return parseInt(this.selectedDate.format('YYYY'))
+      return parseInt(this.selectedDate.format('YYYY'));
     },
     days() {
       return [
