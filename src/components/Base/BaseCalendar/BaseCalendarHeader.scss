@@ -1,0 +1,13 @@
+.base-calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background-color: $brand-primary;
+
+  &__date {
+    font-size: 1rem;
+    font-weight: 600;
+    color: $text-color--accent;
+  }
+}

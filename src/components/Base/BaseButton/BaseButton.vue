@@ -11,9 +11,15 @@
     @focus="$emit('focus')"
     class="base-button"
   >
-    <p class="base-button__text">
+    <p class="base-button__text" v-if="type !== 'icon'">
       <slot></slot>
     </p>
+
+    <img
+      class="base-button__icon"
+      alt
+      :src="`/assets/icons/${icon}.svg`"
+    />
   </component>
 </template>
 
@@ -57,6 +63,11 @@ export default {
       required: false,
       default: () => (false),
     },
+    icon: {
+      type: String,
+      required: false,
+      default: () => (''),
+    }
   },
   computed: {
     componentType() {
@@ -69,6 +80,7 @@ export default {
     classes() {
       return [
         this.type === 'primary' ? 'base-button--primary' : '',
+        this.type === 'icon' ? 'base-button--icon' : '',
         this.fullSize ? 'base-button--full-size' : '',
         this.disabled ? 'base-button--disabled' : '',
       ];

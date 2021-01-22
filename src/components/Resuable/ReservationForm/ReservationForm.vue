@@ -15,6 +15,12 @@
 
     <div class="reservation-form__content">
       <!-- TODO: Calendar component -->
+
+      <base-calendar
+        v-model="todaysDate"
+        class="reservation-form__calendar"
+      />
+
       <base-button
         title="Make a reservation"
         full-size
@@ -33,15 +39,17 @@
 <script>
 import BaseReviews from '@/components/Base/BaseReviews/BaseReviews.vue';
 import BaseButton from '@/components/Base/BaseButton/BaseButton.vue';
+import BaseCalendar from '@/components/Base/BaseCalendar/BaseCalendar.vue';
 
 export default {
   name: 'ReservationForm',
   components: {
     BaseReviews,
     BaseButton,
+    BaseCalendar,
   },
   data: () => ({
-
+    todaysDate: new Date(),
   }),
   props: {
     price: {
@@ -68,6 +76,10 @@ export default {
   methods: {
     bookReservation() {
       // TODO: Action for booking dates
+      this.$emit('bookReservation');
+    },
+    submitForm() {
+      // TODO: Validation for form
     },
   },
 };

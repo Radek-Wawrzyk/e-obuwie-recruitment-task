@@ -24,6 +24,11 @@
     color: inherit;
   }
 
+  &__icon {
+    width: 1.5rem;
+    height: auto;
+  }
+
   &:hover,
   &:focus {
     cursor: pointer;
@@ -37,6 +42,13 @@
     &:hover, &:focus {
       background: $brand-primary--pale;
     }
+  }
+
+  &--icon {
+    width: auto;
+    min-width: auto;
+    min-height: auto;
+    padding: 0.5rem;
   }
 
   &--disabled {
