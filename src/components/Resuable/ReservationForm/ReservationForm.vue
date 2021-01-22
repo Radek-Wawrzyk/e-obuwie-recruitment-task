@@ -8,6 +8,7 @@
       <base-reviews
         :rating="reviewsRating"
         :count="reviewsCount"
+        :max="5"
         class="reservation-form__reviews"
       />
     </header>

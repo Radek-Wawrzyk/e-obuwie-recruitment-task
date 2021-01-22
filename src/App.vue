@@ -15,8 +15,8 @@ import ReservationForm from '@/components/Resuable/ReservationForm/ReservationFo
 
 export default {
   name: 'App',
-  components: { 
-    ReservationForm 
+  components: {
+    ReservationForm,
   },
   data: () => ({
 
