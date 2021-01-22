@@ -8,25 +8,27 @@
       />
 
       <base-calendar-week-days class="base-calendar__week-days" />
+
+      <base-calendar-dates
+        :today="today"
+        :days="days"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import BaseCalendarDay from '@/components/Base/BaseCalendarDay/BaseCalendarDay.vue';
 import dayjs from 'dayjs';
-import BaseCalendarWeekDays from '@/components/Base/BaseCalendarWeekDays/BaseCalendarWeekDays.vue';
+import BaseCalendarWeekDays from '@/components/Base/BaseCalendar/BaseCalendarWeekDays.vue';
 import BaseCalendarHeader from '@/components/Base/BaseCalendar/BaseCalendarHeader.vue';
+import BaseCalendarDates from '@/components/Base/BaseCalendar/BaseCalendarDates.vue';
 
 export default {
   name: 'BaseCalendar',
   components: {
-    BaseCalendarDay,
     BaseCalendarWeekDays,
     BaseCalendarHeader,
-  },
-  props: {
-
+    BaseCalendarDates,
   },
   date: () => ({
     todaysDate: new Date(),
@@ -43,6 +45,12 @@ export default {
   computed: {
     currentMonthWithYear() {
       return dayjs(this.todaysDate).format('MMMM YYYY')
+    },
+    today() {
+      return dayjs().format("YYYY-MM-DD");
+    },
+    days() {
+      return Array.from({ length: 30 }).map((date, index) => index + 1);
     },
   },
 };

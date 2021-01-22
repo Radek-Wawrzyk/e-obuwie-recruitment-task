@@ -1,0 +1,13 @@
+.base-calendar-day {
+  position: relative;
+  height: 3rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  z-index: 1;
+  background-color: $text-color--accent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $text-color--pale;
+  text-align: center;
+}
