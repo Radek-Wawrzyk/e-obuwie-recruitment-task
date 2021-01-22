@@ -1,7 +1,7 @@
 <template>
-  <svg 
-    viewBox="0 0 11 10" 
-    preserveAspectRatio="none" 
+  <svg
+    viewBox="0 0 11 10"
+    preserveAspectRatio="none"
     class="base-star"
   >
     <path

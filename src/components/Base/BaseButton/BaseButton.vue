@@ -30,7 +30,6 @@ export default {
     to: {
       type: String,
       required: false,
-      default: null,
       default: () => (null),
     },
     nativeLink: {
@@ -67,7 +66,7 @@ export default {
       type: String,
       required: false,
       default: () => (''),
-    }
+    },
   },
   computed: {
     componentType() {

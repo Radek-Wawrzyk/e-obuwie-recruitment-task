@@ -44,10 +44,10 @@ export default {
   },
   computed: {
     currentMonthWithYear() {
-      return dayjs(this.todaysDate).format('MMMM YYYY')
+      return dayjs(this.todaysDate).format('MMMM YYYY');
     },
     today() {
-      return dayjs().format("YYYY-MM-DD");
+      return dayjs().format('YYYY-MM-DD');
     },
     days() {
       return Array.from({ length: 30 }).map((date, index) => index + 1);

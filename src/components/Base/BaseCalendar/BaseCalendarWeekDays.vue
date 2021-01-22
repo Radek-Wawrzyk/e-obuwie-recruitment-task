@@ -1,6 +1,6 @@
 <template>
   <ul class="base-calendar-week-days">
-    <li 
+    <li
       class="base-calendar-week-days__item"
       v-for="date in weekDays"
       :key="date"
@@ -15,7 +15,7 @@ export default {
   name: 'BaseCalendarWeekDays',
   computed: {
     weekDays() {
-      return ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+      return ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     },
   },
 };
