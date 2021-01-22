@@ -6,12 +6,14 @@
     ]"
   >
     <span class="base-calendar-day__label">
-      {{ day }}
+      {{ dayInNumber }}
     </span>
   </li>
 </template>
 
 <script>
+import dayjs from 'dayjs';
+
 export default {
   name: 'BaseCalendarDay',
   props: {
@@ -20,10 +22,14 @@ export default {
       required: false,
       default: () => (false),
     },
+    day: {
+      type: Object,
+      required: true,
+    },
   },
   computed: {
-    day() {
-      return 1;
+    dayInNumber () {
+      return dayjs(this.day.date).format('D');
     },
   },
 };

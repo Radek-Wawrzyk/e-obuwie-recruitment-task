@@ -1,3 +1,10 @@
 .base-calendar {
   position: relative;
+
+  &__inner {
+    box-shadow: 0 14px 54px rgba(0, 0, 0, 0.16);
+    border: 1px solid $border-color;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
 }

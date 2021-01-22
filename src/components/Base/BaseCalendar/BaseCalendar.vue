@@ -30,9 +30,10 @@ export default {
     BaseCalendarHeader,
     BaseCalendarDates,
   },
-  date: () => ({
+  data: () => ({
     todaysDate: new Date(),
     isActive: false,
+    selectedDate: dayjs(),
   }),
   methods: {
     setPrevMonth() {
@@ -49,8 +50,27 @@ export default {
     today() {
       return dayjs().format('YYYY-MM-DD');
     },
+    month() {
+      return parseInt(this.selectedDate.format('M'))
+    },
+    year() {
+      return parseInt(this.selectedDate.format('YYYY'))
+    },
     days() {
-      return Array.from({ length: 30 }).map((date, index) => index + 1);
+      return [
+        ...this.currentMonthDays,
+      ];
+    },
+    numberDaysInMonth() {
+      return dayjs(this.selectedDate).daysInMonth();
+    },
+    currentMonthDays() {
+      return Array.from({ length: this.numberDaysInMonth }).map((day, index) => {
+        return {
+          date: dayjs(`${this.year}-${this.month}-${index + 1}`).format('YYYY-MM-DD'),
+          isCurrentMonth: true,
+        };
+      });
     },
   },
 };
