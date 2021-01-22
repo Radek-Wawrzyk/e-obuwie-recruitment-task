@@ -36,10 +36,10 @@ export default {
   },
   methods: {
     setPrevMonth() {
-      this.$emit('setPrevMonth');
+      this.$emit('set-prev-month');
     },
     setNextMonth() {
-      this.$emit('setNextMonth');
+      this.$emit('set-next-month');
     },
   },
 };

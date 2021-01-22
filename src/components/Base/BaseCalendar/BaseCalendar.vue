@@ -9,10 +9,13 @@
 
       <base-calendar-week-days class="base-calendar__week-days" />
 
-      <base-calendar-dates
-        :today="today"
-        :days="days"
-      />
+      <transition name="fade" mode="out-in">
+        <base-calendar-dates
+          :today="today"
+          :days="days"
+          :key="currentMonthWithYear"
+        />
+      </transition>
     </div>
   </div>
 </template>
@@ -37,15 +40,15 @@ export default {
   }),
   methods: {
     setPrevMonth() {
-
+      this.selectedDate = dayjs(this.selectedDate).subtract(1, "month");
     },
     setNextMonth() {
-
+      this.selectedDate = dayjs(this.selectedDate).add(1, "month");
     },
   },
   computed: {
     currentMonthWithYear() {
-      return dayjs(this.todaysDate).format('MMMM YYYY');
+      return dayjs(this.selectedDate).format('MMMM YYYY');
     },
     today() {
       return dayjs().format('YYYY-MM-DD');
