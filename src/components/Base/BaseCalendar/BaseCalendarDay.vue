@@ -3,6 +3,7 @@
     class="base-calendar-day"
     :class="[
       isToday ? 'base-calendar-day--today' : false,
+      isNotCurrentMonth ? 'base-calendar-day--not-currect' : false,
     ]"
   >
     <span class="base-calendar-day__label">
@@ -32,6 +33,9 @@ export default {
     },
     isToday() {
       return this.day.date === this.today;
+    },
+    isNotCurrentMonth() {
+      return !this.day.isCurrentMonth;
     },
   },
 };

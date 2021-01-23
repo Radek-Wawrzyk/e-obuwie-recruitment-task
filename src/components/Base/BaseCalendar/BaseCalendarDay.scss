@@ -8,11 +8,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $text-color--pale;
+  color: $text-color;
   text-align: center;
 
   &--today {
     border: 2px solid $brand-primary;
     border-radius: 50%;
+  }
+
+  &--not-currect {
+    opacity: 0.4;
   }
 }

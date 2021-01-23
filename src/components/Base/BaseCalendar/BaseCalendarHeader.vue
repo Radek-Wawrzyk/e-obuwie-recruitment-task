@@ -7,9 +7,11 @@
       class="base-calendar-header__button"
     />
 
-    <h4 class="base-calendar-header__date">
-      {{ currentMonthWithYear }}
-    </h4>
+    <transition name="fade" mode="out-in">
+      <h4 class="base-calendar-header__date" :key="currentMonthWithYear">
+        {{ currentMonthWithYear }}
+      </h4>
+    </transition>
 
     <base-button
       @click="setNextMonth()"
