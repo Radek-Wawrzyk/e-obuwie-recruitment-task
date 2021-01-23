@@ -14,6 +14,8 @@
   &--today {
     border: 2px solid $brand-primary;
     border-radius: 50%;
+    color: $brand-primary;
+    font-weight: 600;
   }
 
   &--not-currect {

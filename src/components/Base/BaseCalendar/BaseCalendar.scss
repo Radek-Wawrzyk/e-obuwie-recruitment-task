@@ -1,9 +1,14 @@
 .base-calendar {
   position: relative;
+  z-index: 10;
 
   &__inner {
+    position: absolute;
+    top: calc(100% + 1rem);
+    left: 0;
     box-shadow: 0 14px 54px rgba(0, 0, 0, 0.16);
     border: 1px solid $border-color;
+    background-color: $text-color--accent;
     border-radius: 0.5rem;
     overflow: hidden;
     width: 338px;

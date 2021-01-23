@@ -1,22 +1,28 @@
 <template>
-  <div class="base-calendar">
-    <div class="base-calendar__inner">
-      <base-calendar-header
-        @set-prev-month="setPrevMonth()"
-        @set-next-month="setNextMonth()"
-        :current-month-with-year="currentMonthWithYear"
-      />
+  <div class="base-calendar" @keyup.esc="closeCalendar()">
+    <base-calendar-picker
+      @open-calendar="openCalendar()"
+    />
 
-      <base-calendar-week-days class="base-calendar__week-days" />
-
-      <transition name="fade" mode="out-in">
-        <base-calendar-dates
-          :today="today"
-          :days="days"
-          :key="currentMonthWithYear"
+    <transition name="fade" mode="out-in">
+      <div class="base-calendar__inner" v-if="isActive">
+        <base-calendar-header
+          @set-prev-month="setPrevMonth()"
+          @set-next-month="setNextMonth()"
+          :current-month-with-year="currentMonthWithYear"
         />
-      </transition>
-    </div>
+
+        <base-calendar-week-days class="base-calendar__week-days" />
+
+        <transition name="fade" mode="out-in">
+          <base-calendar-dates
+            :today="today"
+            :days="days"
+            :key="currentMonthWithYear"
+          />
+        </transition>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -24,6 +30,7 @@
 import BaseCalendarWeekDays from '@/components/Base/BaseCalendar/BaseCalendarWeekDays.vue';
 import BaseCalendarHeader from '@/components/Base/BaseCalendar/BaseCalendarHeader.vue';
 import BaseCalendarDates from '@/components/Base/BaseCalendar/BaseCalendarDates.vue';
+import BaseCalendarPicker from '@/components/Base/BaseCalendar/BaseCalendarPicker.vue';
 
 import dayjs from 'dayjs';
 import weekday from 'dayjs/plugin/weekday';
@@ -38,6 +45,7 @@ export default {
     BaseCalendarWeekDays,
     BaseCalendarHeader,
     BaseCalendarDates,
+    BaseCalendarPicker,
   },
   data: () => ({
     todaysDate: new Date(),
@@ -53,6 +61,16 @@ export default {
     },
     getWeekday(date) {
       return dayjs(date).weekday();
+    },
+    openCalendar() {
+      this.isActive = true;
+    },
+    closeCalendar() {
+      this.isActive = false;
+    },
+    handleOutsideClick({ target }) {
+      const isClickInside = this.$el.contains(target);
+      !isClickInside ? this.closeCalendar() : false
     },
   },
   computed: {
@@ -128,6 +146,12 @@ export default {
         };
       });
     },
+  },
+  mounted() {
+    document.addEventListener('click', this.handleOutsideClick);
+  },
+  beforeDestroy() {
+    document.removeEventListener('click', this.handleOutsideClick);
   },
 };
 </script>
