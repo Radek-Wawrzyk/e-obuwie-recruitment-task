@@ -5,6 +5,7 @@
       isToday ? 'base-calendar-day--today' : false,
       isNotCurrentMonth ? 'base-calendar-day--not-currect' : false,
       isSelected ? 'base-calendar-day--selected' : false,
+      isBetween ? 'base-calendar-day--is-between' : false,
     ]"
     @click="selectDate()"
   >
@@ -37,6 +38,11 @@ export default {
       type: String,
       required: false,
       default: () => (null),
+    },
+    isBetween: {
+      type: Boolean,
+      required: false,
+      default: () => (false),
     },
   },
   computed: {

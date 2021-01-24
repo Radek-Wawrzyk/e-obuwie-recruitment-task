@@ -5,10 +5,10 @@
       @click="openCalendar()"
     >
       <p class="base-calendar-picker__text">
-        Check in
+        {{ dateStart ? dateStart : 'Check in' }}
       </p>
       <p class="base-calendar-picker__text">
-        Check out
+        {{ dateEnd ? dateEnd : 'Check out' }}
       </p>
     </button>
   </div>
@@ -17,11 +17,31 @@
 <script>
 export default {
   name: 'BaseCalendarPicker',
+  props: {
+    dateStart: {
+      type: String,
+      required: false,
+      default: () => (null),
+    },
+    dateEnd: {
+      type: String,
+      required: false,
+      default: () => (null),
+    },
+  },
   methods: {
     openCalendar() {
       this.$emit('open-calendar');
     },
   },
+  // computed: {
+  //   dateFrom() {
+  //     ret
+  //   },
+  //   dateTo() {
+
+  //   },
+  // },
 };
 </script>
 

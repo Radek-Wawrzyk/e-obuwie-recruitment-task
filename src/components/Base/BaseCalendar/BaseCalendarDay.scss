@@ -25,9 +25,15 @@
     font-weight: 600;
   }
 
+  &--is-between {
+    background-color: $brand-primary--accent;
+    border-radius: 0;
+  }
+
   &--selected {
     background-color: $brand-primary;
     color: $text-color--accent;
+    border-radius: 50%;
   }
 
   &--not-currect {

@@ -7,6 +7,7 @@
       :day="day"
       :date-start="dateStart"
       :date-end="dateEnd"
+      :is-between="isBetween(day)"
       class="base-calendar-dates__item"
       @select-date="selectDate($event)"
     />
@@ -40,6 +41,11 @@ export default {
       required: false,
       default: () => (null),
     },
+    daysBetween: {
+      type: Array,
+      required: false,
+      default: () => ([]),
+    },
   },
   methods: {
     selectDate(day) {
@@ -50,6 +56,9 @@ export default {
 
       this.$emit('set-date-end', day.date);
     },
+    isBetween(day) {
+      return this.daysBetween.includes(day.date) ? true : false;
+    }
   },
 };
 </script>

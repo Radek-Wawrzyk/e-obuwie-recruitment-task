@@ -2,10 +2,12 @@
   <div class="base-calendar" @keyup.esc="closeCalendar()">
     <base-calendar-picker
       @open-calendar="openCalendar()"
+      :date-start="dateStart"
+      :date-end="dateEnd"
     />
 
     <transition name="fade" mode="out-in">
-      <div class="base-calendar__inner" v-if="true">
+      <div class="base-calendar__inner" v-if="isActive">
         <base-calendar-header
           @set-prev-month="setPrevMonth()"
           @set-next-month="setNextMonth()"
@@ -21,7 +23,7 @@
             :key="currentMonthWithYear"
             :date-start="dateStart"
             :date-end="dateEnd"
-            @book-dates="bookDates($event)"
+            :days-between="daysBetween"
             @set-date-start="setDateStart($event)"
             @set-date-end="setDateEnd($event)"
           />
@@ -40,7 +42,9 @@ import BaseCalendarPicker from '@/components/Base/BaseCalendar/BaseCalendarPicke
 import dayjs from 'dayjs';
 import weekday from 'dayjs/plugin/weekday';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
+import isBetween from 'dayjs/plugin/isBetween';
 
+dayjs.extend(isBetween)
 dayjs.extend(weekday);
 dayjs.extend(weekOfYear);
 
@@ -66,6 +70,14 @@ export default {
     dateStart: null,
     dateEnd: null,
   }),
+  watch: {
+    dateStart() {
+      this.dateStart && this.dateEnd ? this.bookDates() : false;
+    },
+    dateEnd() {
+      this.dateStart && this.dateEnd ? this.bookDates() : false;
+    },
+  },
   methods: {
     setPrevMonth() {
       this.selectedDate = dayjs(this.selectedDate).subtract(1, 'month');
@@ -86,8 +98,8 @@ export default {
       const isClickInside = this.$el.contains(target);
       !isClickInside ? this.closeCalendar() : false;
     },
-    bookDates(dates) {
-      console.log(dates);
+    bookDates() {
+      console.log('booked');
     },
     setDateStart(date) {
       this.dateStart = date;
@@ -95,8 +107,24 @@ export default {
     setDateEnd(date) {
       this.dateEnd = date;
     },
+    getDatesBetween(dateStart, dateEnd) {
+      const dates = [];
+      const dateFrom = dayjs(dateStart);
+      const dateTo = dayjs(dateEnd);
+      let currentDate = dateFrom.add(1, 'day');;
+
+      while (currentDate.isBefore(dateTo)) {
+        dates.push(currentDate.format('YYYY-MM-DD'));
+        currentDate = currentDate.add(1, 'day');
+      }
+
+      return dates;
+    },
   },
   computed: {
+    daysBetween() {
+      return this.getDatesBetween(this.dateEnd, this.dateStart);
+    },
     currentMonthWithYear() {
       return dayjs(this.selectedDate).format('MMMM YYYY');
     },
