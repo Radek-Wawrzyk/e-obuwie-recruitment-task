@@ -5,7 +5,7 @@
     />
 
     <transition name="fade" mode="out-in">
-      <div class="base-calendar__inner" v-if="isActive">
+      <div class="base-calendar__inner" v-if="true">
         <base-calendar-header
           @set-prev-month="setPrevMonth()"
           @set-next-month="setNextMonth()"
@@ -19,6 +19,11 @@
             :today="today"
             :days="days"
             :key="currentMonthWithYear"
+            :date-start="dateStart"
+            :date-end="dateEnd"
+            @book-dates="bookDates($event)"
+            @set-date-start="setDateStart($event)"
+            @set-date-end="setDateEnd($event)"
           />
         </transition>
       </div>
@@ -47,10 +52,19 @@ export default {
     BaseCalendarDates,
     BaseCalendarPicker,
   },
+  props: {
+    bookedDates: {
+      type: Array,
+      required: false,
+      default: () => ([]),
+    },
+  },
   data: () => ({
     todaysDate: new Date(),
     isActive: false,
     selectedDate: dayjs(),
+    dateStart: null,
+    dateEnd: null,
   }),
   methods: {
     setPrevMonth() {
@@ -70,7 +84,16 @@ export default {
     },
     handleOutsideClick({ target }) {
       const isClickInside = this.$el.contains(target);
-      !isClickInside ? this.closeCalendar() : false
+      !isClickInside ? this.closeCalendar() : false;
+    },
+    bookDates(dates) {
+      console.log(dates);
+    },
+    setDateStart(date) {
+      this.dateStart = date;
+    },
+    setDateEnd(date) {
+      this.dateEnd = date;
     },
   },
   computed: {

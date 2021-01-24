@@ -5,7 +5,10 @@
       :key="index"
       :today="today"
       :day="day"
+      :date-start="dateStart"
+      :date-end="dateEnd"
       class="base-calendar-dates__item"
+      @select-date="selectDate($event)"
     />
   </ul>
 </template>
@@ -26,6 +29,26 @@ export default {
     today: {
       type: String,
       required: true,
+    },
+    dateStart: {
+      type: String,
+      required: false,
+      default: () => (null),
+    },
+    dateEnd: {
+      type: String,
+      required: false,
+      default: () => (null),
+    },
+  },
+  methods: {
+    selectDate(day) {
+      if (this.dateEnd) {
+        this.$emit('set-date-start', day.date);
+        return;
+      }
+
+      this.$emit('set-date-end', day.date);
     },
   },
 };

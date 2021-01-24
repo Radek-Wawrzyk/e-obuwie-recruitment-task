@@ -4,7 +4,9 @@
     :class="[
       isToday ? 'base-calendar-day--today' : false,
       isNotCurrentMonth ? 'base-calendar-day--not-currect' : false,
+      isSelected ? 'base-calendar-day--selected' : false,
     ]"
+    @click="selectDate()"
   >
     <span class="base-calendar-day__label">
       {{ dayInNumber }}
@@ -26,6 +28,16 @@ export default {
       type: Object,
       required: true,
     },
+    dateStart: {
+      type: String,
+      required: false,
+      default: () => (null),
+    },
+    dateEnd: {
+      type: String,
+      required: false,
+      default: () => (null),
+    },
   },
   computed: {
     dayInNumber() {
@@ -36,6 +48,17 @@ export default {
     },
     isNotCurrentMonth() {
       return !this.day.isCurrentMonth;
+    },
+    isSelected() {
+      if (this.dateStart === this.day.date) return true;
+      if (this.dateEnd === this.day.date) return true;
+
+      return false;
+    },
+  },
+  methods: {
+    selectDate() {
+      this.$emit('select-date', this.day);
     },
   },
 };

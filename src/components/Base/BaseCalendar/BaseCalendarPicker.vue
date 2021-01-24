@@ -1,6 +1,6 @@
 <template>
   <div class="base-calendar-picker">
-    <button 
+    <button
       class="base-calendar-picker__button"
       @click="openCalendar()"
     >
@@ -25,6 +25,4 @@ export default {
 };
 </script>
 
-<style>
-
-</style>
+<style lang="scss" src="./BaseCalendarPicker.scss" />

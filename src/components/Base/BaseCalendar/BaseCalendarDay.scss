@@ -10,12 +10,24 @@
   justify-content: center;
   color: $text-color;
   text-align: center;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  transition: all $time;
+
+  &:hover, &:focus {
+    cursor: pointer;
+    background-color: $brand-primary--pale;
+  }
 
   &--today {
-    border: 2px solid $brand-primary;
-    border-radius: 50%;
+    border-color: $brand-primary;
     color: $brand-primary;
     font-weight: 600;
+  }
+
+  &--selected {
+    background-color: $brand-primary;
+    color: $text-color--accent;
   }
 
   &--not-currect {
