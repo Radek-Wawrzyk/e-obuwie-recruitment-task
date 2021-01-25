@@ -1,7 +1,15 @@
 .base-calendar-picker {
+  position: relative;
   display: block;
   
-
+  &__label {
+    display: block;
+    margin: 0 0 1rem 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: left;
+  }
+  
   &__button {
     display: flex;
     align-items: center;
@@ -12,13 +20,25 @@
     background-color: transparent;
     border-radius: 0.5rem;
     padding: 0 1rem;
+    transition: all $time;
 
-    &:hover, &:focus {
+    &:hover {
       cursor: pointer;
+    }
+
+    &:focus {
+      border-color: $brand-primary;
+      outline: none;
+
+      .base-calendar-picker__text {
+        color: $brand-primary;
+      }
     }
   }
 
   &__text {
     color: $text-color;
+    font-size: 0.8rem;
+    transition: all $time;
   }
 }

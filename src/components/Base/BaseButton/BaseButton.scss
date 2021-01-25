@@ -59,4 +59,8 @@
   &--full-size {
     width: 100%;
   }
+
+  &--outline {
+    border: 2px solid $text-color;
+  }
 }

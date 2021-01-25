@@ -1,0 +1,46 @@
+.base-input {
+  position: relative;
+
+  &__inner {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 4rem;
+    width: 100%;
+    display: block;
+    padding: 0 1rem;
+    color: $text-color;
+    border: 1px solid $border-color;
+    border-radius: 0.5rem;
+    font-weight: 400;
+    font-size: 0.8rem;
+    outline: none;
+    transition: all $time;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+
+    &:focus {
+      border-color: $brand-primary;
+      color: $brand-primary;
+
+      &::placeholder {
+        color: $brand-primary;
+      }
+    }
+
+    &::placeholder {
+      color: $text-color--pale;
+      font-weight: 400;
+      transition: all $time;
+    }
+  }
+
+  &__label {
+    display: block;
+    margin: 0 0 1rem 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: left;
+  }
+}

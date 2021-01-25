@@ -1,5 +1,9 @@
 <template>
   <div class="base-calendar-picker">
+    <label class="base-calendar-picker__label">
+      {{ label }}
+    </label>
+
     <button
       class="base-calendar-picker__button"
       @click="openCalendar()"
@@ -28,20 +32,17 @@ export default {
       required: false,
       default: () => (null),
     },
+    label: {
+      type: String,
+      required: false,
+      default: '',
+    },
   },
   methods: {
     openCalendar() {
       this.$emit('open-calendar');
     },
   },
-  // computed: {
-  //   dateFrom() {
-  //     ret
-  //   },
-  //   dateTo() {
-
-  //   },
-  // },
 };
 </script>
 

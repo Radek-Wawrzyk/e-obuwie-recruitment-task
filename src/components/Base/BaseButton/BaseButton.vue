@@ -80,6 +80,7 @@ export default {
       return [
         this.type === 'primary' ? 'base-button--primary' : '',
         this.type === 'icon' ? 'base-button--icon' : '',
+        this.type === 'outline' ? 'base-button--outline' : '',
         this.fullSize ? 'base-button--full-size' : '',
         this.disabled ? 'base-button--disabled' : '',
       ];

@@ -4,6 +4,7 @@
       @open-calendar="openCalendar()"
       :date-start="dateStart"
       :date-end="dateEnd"
+      label="Dates"
     />
 
     <transition name="fade" mode="out-in">
@@ -102,15 +103,24 @@ export default {
       console.log('booked');
     },
     setDateStart(date) {
-      this.dateStart = date;
+      if (!this.dateEnd) this.dateStart = date;
+      
+      if (this.dateEnd) {
+        console.log(dayjs(this.dateEnd).isBefore(dayjs(this.dateStart)));
+
+      }
     },
     setDateEnd(date) {
       this.dateEnd = date;
     },
     getDatesBetween(dateStart, dateEnd) {
       const dates = [];
-      const dateFrom = dayjs(dateStart);
-      const dateTo = dayjs(dateEnd);
+      let dateFrom = dayjs(dateStart);
+      let dateTo = dayjs(dateEnd);
+
+      // dateFrom = dateFrom.isBefore(dateTo) ?
+
+
       let currentDate = dateFrom.add(1, 'day');;
 
       while (currentDate.isBefore(dateTo)) {

@@ -21,6 +21,31 @@
         class="reservation-form__calendar"
       />
 
+      <div class="reservation-form__data">
+        <base-input
+          class="reservation-form__data-input"
+          v-model="firstName"
+          label="First name"
+          placeholder="John"
+        />
+        <base-input
+          class="reservation-form__data-input"
+          v-model="lastName"
+          label="Last name"
+          placeholder="Doe"
+        />
+      </div>
+
+      <base-button
+        title="Clear form"
+        full-size
+        type="outline"
+        @click="clearForm()"
+        class="reservation-form__clear-button"
+      >
+        Clear form
+      </base-button>
+
       <base-button
         title="Make a reservation"
         full-size
@@ -39,6 +64,7 @@
 <script>
 import BaseReviews from '@/components/Base/BaseReviews/BaseReviews.vue';
 import BaseButton from '@/components/Base/BaseButton/BaseButton.vue';
+import BaseInput from '@/components/Base/BaseInput/BaseInput.vue';
 import BaseCalendar from '@/components/Base/BaseCalendar/BaseCalendar.vue';
 
 export default {
@@ -46,10 +72,14 @@ export default {
   components: {
     BaseReviews,
     BaseButton,
+    BaseInput,
     BaseCalendar,
   },
   data: () => ({
     todaysDate: new Date(),
+    firstName: '',
+    lastName: '',
+    bookedDate: null,
   }),
   props: {
     price: {
@@ -80,6 +110,11 @@ export default {
     },
     submitForm() {
       // TODO: Validation for form
+    },
+    clearForm() {
+      this.firstName = '';
+      this.lastName = '';
+      this.bookedDate = null;
     },
   },
 };
