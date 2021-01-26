@@ -1,8 +1,8 @@
 <template>
   <div class="base-input">
-    <label 
-      v-if="label" 
-      class="base-input__label" 
+    <label
+      v-if="label"
+      class="base-input__label"
       :for="name"
     >
       {{ label }}

@@ -45,7 +45,7 @@ import weekday from 'dayjs/plugin/weekday';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
 import isBetween from 'dayjs/plugin/isBetween';
 
-dayjs.extend(isBetween)
+dayjs.extend(isBetween);
 dayjs.extend(weekday);
 dayjs.extend(weekOfYear);
 
@@ -59,6 +59,11 @@ export default {
   },
   props: {
     bookedDates: {
+      type: Array,
+      required: false,
+      default: () => ([]),
+    },
+    value: {
       type: Array,
       required: false,
       default: () => ([]),
@@ -78,6 +83,15 @@ export default {
     dateEnd() {
       this.dateStart && this.dateEnd ? this.bookDates() : false;
     },
+    value: {
+      deep: true,
+      handler() {
+        if (!this.value.length) {
+          this.dateStart = null;
+          this.dateEnd = null;
+        }
+      }
+    }
   },
   methods: {
     setPrevMonth() {
@@ -100,28 +114,20 @@ export default {
       !isClickInside ? this.closeCalendar() : false;
     },
     bookDates() {
-      console.log('booked');
+      this.$emit('input', [this.dateStart, this.dateEnd]);
+      this.$emit('change', [this.dateStart, this.dateEnd]); // Optional event
     },
     setDateStart(date) {
-      if (!this.dateEnd) this.dateStart = date;
-      
-      if (this.dateEnd) {
-        console.log(dayjs(this.dateEnd).isBefore(dayjs(this.dateStart)));
-
-      }
+      this.dateStart = date;
     },
     setDateEnd(date) {
       this.dateEnd = date;
     },
     getDatesBetween(dateStart, dateEnd) {
       const dates = [];
-      let dateFrom = dayjs(dateStart);
-      let dateTo = dayjs(dateEnd);
-
-      // dateFrom = dateFrom.isBefore(dateTo) ?
-
-
-      let currentDate = dateFrom.add(1, 'day');;
+      const dateFrom = dayjs(dateStart);
+      const dateTo = dayjs(dateEnd);
+      let currentDate = dateFrom;
 
       while (currentDate.isBefore(dateTo)) {
         dates.push(currentDate.format('YYYY-MM-DD'));
@@ -133,7 +139,7 @@ export default {
   },
   computed: {
     daysBetween() {
-      return this.getDatesBetween(this.dateEnd, this.dateStart);
+      return this.getDatesBetween(this.dateStart, this.dateEnd);
     },
     currentMonthWithYear() {
       return dayjs(this.selectedDate).format('MMMM YYYY');

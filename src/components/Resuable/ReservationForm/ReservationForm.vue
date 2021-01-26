@@ -17,7 +17,7 @@
       <!-- TODO: Calendar component -->
 
       <base-calendar
-        v-model="todaysDate"
+        v-model="bookDates"
         class="reservation-form__calendar"
       />
 
@@ -79,7 +79,7 @@ export default {
     todaysDate: new Date(),
     firstName: '',
     lastName: '',
-    bookedDate: null,
+    bookDates: [],
   }),
   props: {
     price: {
@@ -105,8 +105,11 @@ export default {
   },
   methods: {
     bookReservation() {
-      // TODO: Action for booking dates
-      this.$emit('bookReservation');
+      this.$emit('bookReservation', {
+        dates: this.bookDates,
+        firstName: this.firstName,
+        lastName: this.lastName,
+      });
     },
     submitForm() {
       // TODO: Validation for form
@@ -114,7 +117,7 @@ export default {
     clearForm() {
       this.firstName = '';
       this.lastName = '';
-      this.bookedDate = null;
+      this.bookDates = [];
     },
   },
 };

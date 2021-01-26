@@ -16,6 +16,7 @@
 
 <script>
 import BaseCalendarDay from '@/components/Base/BaseCalendar/BaseCalendarDay.vue';
+import dayjs from 'dayjs';
 
 export default {
   name: 'BaseCalendarDates',
@@ -49,16 +50,27 @@ export default {
   },
   methods: {
     selectDate(day) {
-      if (this.dateEnd) {
-        this.$emit('set-date-start', day.date);
-        return;
-      }
+      if (!this.dateStart && !this.dateEnd) this.$emit('set-date-start', day.date);
+      if (!this.dateEnd && this.dateStart) this.$emit('set-date-end', day.date);
 
-      this.$emit('set-date-end', day.date);
+      if (this.dateStart && this.dateEnd) {
+        const currentDate = dayjs(day.date);
+        const dateFrom = dayjs(this.dateStart);
+        const dateTo = dayjs(this.dateEnd);
+
+        if (currentDate.isBefore(dateTo)) {
+          this.$emit('set-date-start', day.date);
+          this.$emit('set-date-end', this.dateEnd);
+        }
+
+        if (currentDate.isAfter(dateFrom)) {
+          this.$emit('set-date-end', day.date);
+        }
+      }
     },
     isBetween(day) {
-      return this.daysBetween.includes(day.date) ? true : false;
-    }
+      return !!this.daysBetween.includes(day.date);
+    },
   },
 };
 </script>
