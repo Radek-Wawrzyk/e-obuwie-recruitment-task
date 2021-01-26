@@ -126,7 +126,7 @@ export default {
     getDatesBetween(dateStart, dateEnd) {
       const dates = [];
       const dateFrom = dayjs(dateStart);
-      const dateTo = dayjs(dateEnd);
+      const dateTo = dayjs(dateEnd).add(1, 'day');
       let currentDate = dateFrom;
 
       while (currentDate.isBefore(dateTo)) {

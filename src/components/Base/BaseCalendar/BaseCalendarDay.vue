@@ -6,10 +6,14 @@
       isNotCurrentMonth ? 'base-calendar-day--not-currect' : false,
       isSelected ? 'base-calendar-day--selected' : false,
       isBetween ? 'base-calendar-day--is-between' : false,
+      dateStart === day.date ? 'base-calendar-day--is-date-start' : false,
+      dateEnd === day.date ? 'base-calendar-day--is-date-end' : false,
     ]"
     @click="selectDate()"
   >
-    <span class="base-calendar-day__label">
+    <span 
+      class="base-calendar-day__label"
+    >
       {{ dayInNumber }}
     </span>
   </li>

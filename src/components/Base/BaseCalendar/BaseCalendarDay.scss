@@ -1,7 +1,6 @@
 .base-calendar-day {
   position: relative;
   height: 3rem;
-  padding: 0.5rem;
   font-size: 1rem;
   z-index: 1;
   background-color: $text-color--accent;
@@ -10,30 +9,78 @@
   justify-content: center;
   color: $text-color;
   text-align: center;
-  border-radius: 50%;
-  border: 2px solid transparent;
   transition: all $time;
+
+  &__label {
+    width: 2.3rem;
+    height: 2.3rem;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    font-weight: inherit;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: all $time;
+  }
 
   &:hover, &:focus {
     cursor: pointer;
-    background-color: $brand-primary--pale;
+    opacity: 0.8;
   }
 
   &--today {
-    border-color: $brand-primary;
     color: $brand-primary;
     font-weight: 600;
+
+    .base-calendar-day__label {
+      border-color: $brand-primary;
+    }
   }
 
   &--is-between {
     background-color: $brand-primary--accent;
-    border-radius: 0;
+
+    &.base-calendar-day--is-date-start {
+      background-color: transparent;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        background-color: $brand-primary--accent;
+      }
+    }
+
+    &.base-calendar-day--is-date-end {
+      background-color: transparent;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        background-color: $brand-primary--accent;
+      }
+    }
   }
 
   &--selected {
-    background-color: $brand-primary;
+    background-color: $brand-primary--accent;
     color: $text-color--accent;
-    border-radius: 50%;
+
+    .base-calendar-day__label {
+      border-color: $brand-primary;
+      background-color: $brand-primary;
+      width: 3rem;
+      height: 3rem;
+      z-index: 1;
+    }
   }
 
   &--not-currect {
