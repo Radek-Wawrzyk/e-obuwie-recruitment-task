@@ -26,12 +26,12 @@ export default {
   props: {
     rating: {
       type: Number,
-      required: true,
+      required: false,
       default: () => (0),
     },
     count: {
       type: Number,
-      required: true,
+      required: false,
       default: () => (0),
     },
     max: {
