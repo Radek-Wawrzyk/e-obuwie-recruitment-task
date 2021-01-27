@@ -20,6 +20,10 @@
     display: flex;
     align-items: center;
 
+    &--error {
+      border-color: $error;
+    }
+
     &:focus {
       border-color: $brand-primary;
       color: $brand-primary;
@@ -42,5 +46,15 @@
     font-size: 0.8rem;
     font-weight: 600;
     text-align: left;
+  }
+
+  &__error {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 5px);
+    font-size: 11px;
+    line-height: 1.4;
+    color: $error;
+    white-space: nowrap;
   }
 }

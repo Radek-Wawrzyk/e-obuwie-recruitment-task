@@ -4,6 +4,7 @@
       @open-calendar="openCalendar()"
       :date-start="dateStart"
       :date-end="dateEnd"
+      :error="error"
       label="Dates"
     />
 
@@ -67,6 +68,10 @@ export default {
       type: Array,
       required: false,
       default: () => ([]),
+    },
+    error: {
+      type: String,
+      required: false,
     },
   },
   data: () => ({

@@ -13,6 +13,9 @@
       :disabled="disabled"
       :id="name"
       :placeholder="placeholder"
+      :class="[
+        error ? 'base-input__inner--error' : false,
+      ]"
       autocomplete="off"
       class="base-input__inner"
       @input="updateValue($event)"
@@ -20,6 +23,11 @@
       @blur="$emit('blur')"
       @focus="$emit('focus')"
     />
+    <transition name="fade">
+      <span class="base-input__error" v-if="error">
+        {{ error }}
+      </span>
+    </transition>
   </div>
 </template>
 
@@ -54,6 +62,10 @@ export default {
       type: Boolean,
       required: false,
       default: false,
+    },
+    error: {
+      type: String,
+      required: false,
     },
   },
   methods: {

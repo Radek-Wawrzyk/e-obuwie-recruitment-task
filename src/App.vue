@@ -2,9 +2,10 @@
   <div id="app">
     <div class="container container--small">
       <reservation-form
-        :price="298"
-        :reviews-rating="3"
-        :reviews-count="144"
+        :price="price"
+        :reviews-rating="reviewsRating"
+        :reviews-count="reviewsCount"
+        @book="bookReservation($event)"
       />
     </div>
   </div>
@@ -19,7 +20,16 @@ export default {
     ReservationForm,
   },
   data: () => ({
-
+    price: 298,
+    reviewsCount: 144,
+    reviewsRating: 3,
   }),
+  methods: {
+    bookReservation(reservation) {
+      alert(`Thanks You have booked your reservation! Reservation details: 
+        ${reservation.firstName } ${reservation.lastName} - ${reservation.dates[0]} - ${reservation.dates[1]}
+      `);
+    },
+  },
 };
 </script>
