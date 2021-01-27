@@ -27,7 +27,7 @@ export default {
   methods: {
     bookReservation(reservation) {
       alert(`Thanks You have booked your reservation! Reservation details: 
-        ${reservation.firstName } ${reservation.lastName} - ${reservation.dates[0]} - ${reservation.dates[1]}
+        ${reservation.firstName} ${reservation.lastName} - ${reservation.dates[0]} - ${reservation.dates[1]}
       `);
     },
   },

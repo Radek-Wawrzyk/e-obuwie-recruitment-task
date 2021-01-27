@@ -11,7 +11,7 @@
     ]"
     @click="selectDate()"
   >
-    <span 
+    <span
       class="base-calendar-day__label"
     >
       {{ dayInNumber }}

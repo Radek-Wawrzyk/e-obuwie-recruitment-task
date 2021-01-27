@@ -22,6 +22,7 @@ module.exports = {
     'no-self-import': 0,
     'import/no-cycle': 0,
     'arrow-body-style': 0,
+    'no-alert': 0,
     'max-len': [
       'error',
       {

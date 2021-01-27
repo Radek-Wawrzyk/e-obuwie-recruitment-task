@@ -95,8 +95,8 @@ export default {
           this.dateStart = null;
           this.dateEnd = null;
         }
-      }
-    }
+      },
+    },
   },
   methods: {
     setPrevMonth() {

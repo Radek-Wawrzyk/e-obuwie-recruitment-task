@@ -14,8 +14,6 @@
     </header>
 
     <div class="reservation-form__content">
-      <!-- TODO: Calendar component -->
-
       <base-calendar
         v-model="reservation.bookDates"
         class="reservation-form__calendar"
@@ -56,13 +54,9 @@
         full-size
         native-type="submit"
       >
-        {{ buttonText }}
+        Make a reservation
       </base-button>
     </div>
-
-    <footer class="reservation-form__bottom">
-      <!-- TODO: Buttons for accepting -->
-    </footer>
   </form>
 </template>
 
@@ -119,14 +113,6 @@ export default {
       },
     },
   },
-  computed: {
-    buttonText() {
-      return 'Make a reservation';
-    },
-    formLength() {
-      return this.reservation ? Object.keys(this.reservation).length : 0;
-    },
-  },
   methods: {
     bookReservation() {
       this.$emit('book', {
@@ -136,24 +122,20 @@ export default {
       });
     },
     validateForm() {
-      return new Promise((resolve, reject) => {
-        isRequired(this.reservation.firstName) 
-          ? delete this.errors.firstName 
+      return new Promise((resolve) => {
+        isRequired(this.reservation.firstName)
+          ? delete this.errors.firstName
           : this.errors.firstName = 'The form field is required';
 
-        isRequired(this.reservation.lastName) 
-          ? delete this.errors.lastName 
+        isRequired(this.reservation.lastName)
+          ? delete this.errors.lastName
           : this.errors.lastName = 'The form field is required';
 
-        min(this.reservation.bookDates, 2) 
-          ? delete this.errors.bookDates 
+        min(this.reservation.bookDates, 2)
+          ? delete this.errors.bookDates
           : this.errors.bookDates = 'The form field is required';
 
-        if (Object.keys(this.errors).length === 0) {
-          resolve(true);
-        } else {
-          resolve(false);
-        }
+        Object.keys(this.errors).length === 0 ? resolve(true) : resolve(false);
       });
     },
     async submitForm() {
@@ -164,6 +146,13 @@ export default {
       this.reservation.firstName = '';
       this.reservation.lastName = '';
       this.reservation.bookDates = [];
+
+      // Make sure that there is a break between reseting values & errors
+      setTimeout(() => {
+        this.errors.firstName = '';
+        this.errors.lastName = '';
+        this.errors.bookDates = '';
+      }, 100);
     },
   },
 };
