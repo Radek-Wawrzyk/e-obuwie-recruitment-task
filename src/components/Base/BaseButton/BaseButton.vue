@@ -19,6 +19,7 @@
       class="base-button__icon"
       alt
       :src="`/assets/icons/${icon}.svg`"
+      v-if="type === 'icon'"
     />
   </component>
 </template>
