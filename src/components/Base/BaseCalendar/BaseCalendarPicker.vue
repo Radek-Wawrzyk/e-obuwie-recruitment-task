@@ -14,6 +14,7 @@
       <p class="base-calendar-picker__text">
         {{ dateStart ? dateStart : 'Check in' }}
       </p>
+
       <p class="base-calendar-picker__text">
         {{ dateEnd ? dateEnd : 'Check out' }}
       </p>
@@ -44,7 +45,7 @@ export default {
     label: {
       type: String,
       required: false,
-      default: '',
+      default: () => (''),
     },
     error: {
       type: String,

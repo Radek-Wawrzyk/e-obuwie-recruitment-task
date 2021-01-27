@@ -75,9 +75,8 @@ export default {
     },
   },
   data: () => ({
-    todaysDate: new Date(),
+    activeDate: dayjs(),
     isActive: false,
-    selectedDate: dayjs(),
     dateStart: null,
     dateEnd: null,
   }),
@@ -100,10 +99,10 @@ export default {
   },
   methods: {
     setPrevMonth() {
-      this.selectedDate = dayjs(this.selectedDate).subtract(1, 'month');
+      this.activeDate = dayjs(this.activeDate).subtract(1, 'month');
     },
     setNextMonth() {
-      this.selectedDate = dayjs(this.selectedDate).add(1, 'month');
+      this.activeDate = dayjs(this.activeDate).add(1, 'month');
     },
     getWeekday(date) {
       return dayjs(date).weekday();
@@ -147,16 +146,16 @@ export default {
       return this.getDatesBetween(this.dateStart, this.dateEnd);
     },
     currentMonthWithYear() {
-      return dayjs(this.selectedDate).format('MMMM YYYY');
+      return dayjs(this.activeDate).format('MMMM YYYY');
     },
     today() {
       return dayjs().format('YYYY-MM-DD');
     },
     month() {
-      return parseInt(this.selectedDate.format('M'));
+      return parseInt(this.activeDate.format('M'));
     },
     year() {
-      return parseInt(this.selectedDate.format('YYYY'));
+      return parseInt(this.activeDate.format('YYYY'));
     },
     days() {
       return [
@@ -166,7 +165,7 @@ export default {
       ];
     },
     numberDaysInMonth() {
-      return dayjs(this.selectedDate).daysInMonth();
+      return dayjs(this.activeDate).daysInMonth();
     },
     currentMonthDays() {
       return Array.from({ length: this.numberDaysInMonth }).map((day, index) => {
@@ -206,7 +205,6 @@ export default {
         `${this.year}-${this.month}-${this.currentMonthDays.length}`,
       );
       const nextMonth = dayjs(`${this.year}-${this.month}-01`).add(1, 'month');
-
       const visibleNumberOfDaysFromNextMonth = lastDayOfTheMonthWeekday
         ? 7 - lastDayOfTheMonthWeekday
         : lastDayOfTheMonthWeekday;
@@ -221,6 +219,12 @@ export default {
   },
   mounted() {
     document.addEventListener('click', this.handleOutsideClick);
+
+    // If value exists => set value to data
+    if (this.value.length === 2) {
+      this.dateStart = this.value[0];
+      this.dateEnd = this.value[1];
+    }
   },
   beforeDestroy() {
     document.removeEventListener('click', this.handleOutsideClick);
