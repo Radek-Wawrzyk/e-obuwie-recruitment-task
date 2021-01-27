@@ -14,10 +14,12 @@
 
 <script>
 export default {
-  name: 'BaseStart',
+  name: 'BaseStar',
   props: {
     isFilled: {
-
+      type: Boolean,
+      required: false,
+      default: () => (false)
     },
   },
 };
