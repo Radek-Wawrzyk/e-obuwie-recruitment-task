@@ -1,5 +1,5 @@
 import BaseInput from '@/components/Base/BaseInput/BaseInput';
-import { shallowMount } from "@vue/test-utils";
+import { shallowMount } from '@vue/test-utils';
 
 describe('BaseInput', () => {
   test('Render label when is passed', () => {
@@ -9,7 +9,7 @@ describe('BaseInput', () => {
         label,
       },
     });
-    
+
     expect(wrapper.find('.base-input__label').text()).toBe(label);
   });
 
@@ -42,8 +42,8 @@ describe('BaseInput', () => {
         type,
       },
     });
-    
-    expect(wrapper.find('.base-input__inner').attributes('type')).toBe(type)
+
+    expect(wrapper.find('.base-input__inner').attributes('type')).toBe(type);
   });
 
   test('If disable props is true, input should be disabled', () => {
@@ -52,7 +52,7 @@ describe('BaseInput', () => {
         disabled: true,
       },
     });
-    
+
     expect(wrapper.find('.base-input__inner').attributes('disabled')).toBe('disabled');
   });
 
@@ -63,7 +63,7 @@ describe('BaseInput', () => {
         value,
       },
     });
-    
+
     expect(wrapper.find('.base-input__inner').element.value).toBe(value);
   });
 });

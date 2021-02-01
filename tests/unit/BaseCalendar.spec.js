@@ -11,7 +11,7 @@ describe('BaseCalendar', () => {
 
   test('If user click button, calendar should have isActive as true', async () => {
     const wrapper = mount(BaseCalendar);
-    const button =  wrapper.find('.base-calendar-picker__button');
+    const button = wrapper.find('.base-calendar-picker__button');
 
     await button.trigger('click');
     expect(wrapper.vm.isActive).toBe(true);
@@ -19,7 +19,7 @@ describe('BaseCalendar', () => {
 
   test('If calendar is open, ESC should close calendar', async () => {
     const wrapper = mount(BaseCalendar);
-  
+
     await wrapper.setData({ isActive: true });
     await wrapper.trigger('keyup.esc');
 
@@ -28,7 +28,7 @@ describe('BaseCalendar', () => {
 
   test('If calendar is not open, click on base-calendar-picker should open calendar', async () => {
     const wrapper = mount(BaseCalendar);
-    
+
     await wrapper.find('.base-calendar-picker__button').trigger('click');
     expect(wrapper.vm.isActive).toBe(true);
   });
@@ -37,9 +37,9 @@ describe('BaseCalendar', () => {
     const wrapper = mount(BaseCalendar);
     const activeDate = dayjs();
 
-    await wrapper.setData({ 
+    await wrapper.setData({
       isActive: true,
-      activeDate: activeDate,
+      activeDate,
     });
 
     const headerComponent = wrapper.findComponent({ name: 'BaseCalendarHeader' });
@@ -53,9 +53,9 @@ describe('BaseCalendar', () => {
     const wrapper = mount(BaseCalendar);
     const activeDate = dayjs();
 
-    await wrapper.setData({ 
+    await wrapper.setData({
       isActive: true,
-      activeDate: activeDate,
+      activeDate,
     });
 
     const headerComponent = wrapper.findComponent({ name: 'BaseCalendarHeader' });

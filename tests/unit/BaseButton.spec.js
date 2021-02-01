@@ -1,5 +1,5 @@
 import BaseButton from '@/components/Base/BaseButton/BaseButton';
-import { shallowMount, mount } from "@vue/test-utils";
+import { shallowMount, mount } from '@vue/test-utils';
 
 describe('BaseButton', () => {
   test('Render img when props type is `icon`', () => {
@@ -25,7 +25,7 @@ describe('BaseButton', () => {
         to: '/',
         nativeLink: false,
       },
-      stubs: ['router-link']
+      stubs: ['router-link'],
     });
 
     expect(wrapper.vm.componentType).toBe('router-link');
@@ -48,13 +48,13 @@ describe('BaseButton', () => {
         nativeType: 'submit',
       },
     });
-    
+
     expect(wrapper.find('.base-button').attributes('type')).toBe('submit');
   });
 
   test('If there is no nativeType props, default type is button', () => {
     const wrapper = shallowMount(BaseButton);
-    
+
     expect(wrapper.find('.base-button').attributes('type')).toBe('button');
   });
 
@@ -64,7 +64,7 @@ describe('BaseButton', () => {
         disabled: true,
       },
     });
-    
+
     expect(wrapper.find('.base-button').attributes('disabled')).toBe('disabled');
   });
 
@@ -74,7 +74,7 @@ describe('BaseButton', () => {
         disabled: true,
       },
     });
-    
+
     expect(wrapper.classes()).toContain('base-button--disabled');
   });
 });

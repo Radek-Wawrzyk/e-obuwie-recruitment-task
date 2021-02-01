@@ -1,5 +1,5 @@
 import BaseStar from '@/components/Base/BaseStar/BaseStar';
-import { shallowMount } from "@vue/test-utils";
+import { shallowMount } from '@vue/test-utils';
 
 describe('BaseStar', () => {
   test('If isFilled prop is true, svg should has fill property as green colour', () => {
@@ -8,7 +8,7 @@ describe('BaseStar', () => {
         isFilled: true,
       },
     });
-    
+
     expect(wrapper.find('.base-star__inner').attributes('fill')).toBe('#3a7a7d');
   });
 
@@ -18,7 +18,7 @@ describe('BaseStar', () => {
         isFilled: false,
       },
     });
-    
+
     expect(wrapper.find('.base-star__inner').attributes('fill')).toBe('#d2d6d3');
   });
 });

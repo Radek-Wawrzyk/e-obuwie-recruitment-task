@@ -1,5 +1,5 @@
 import BaseCalendarDay from '@/components/Base/BaseCalendar/BaseCalendarDay';
-import { mount, shallowMount } from "@vue/test-utils";
+import { mount, shallowMount } from '@vue/test-utils';
 
 describe('BaseCalendarDay', () => {
   test('If today is the same as day props, isToday computed should be true', () => {
@@ -9,11 +9,10 @@ describe('BaseCalendarDay', () => {
           date: '2020-12-31',
           isCurrentMonth: false,
         },
-        today: '2020-12-31'
+        today: '2020-12-31',
       },
     });
 
-    
     expect(wrapper.vm.isToday).toBe(true);
   });
 
@@ -24,7 +23,7 @@ describe('BaseCalendarDay', () => {
           date: '2020-12-31',
           isCurrentMonth: false,
         },
-        today: '2020-11-31'
+        today: '2020-11-31',
       },
     });
 
@@ -38,7 +37,7 @@ describe('BaseCalendarDay', () => {
           date: '2020-12-31',
           isCurrentMonth: false,
         },
-        today: '2020-12-31'
+        today: '2020-12-31',
       },
     });
 
@@ -53,7 +52,7 @@ describe('BaseCalendarDay', () => {
           isCurrentMonth: false,
         },
         today: '2020-12-31',
-        dateStart: '2020-12-31'
+        dateStart: '2020-12-31',
       },
     });
 
