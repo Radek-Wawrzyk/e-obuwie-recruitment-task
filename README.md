@@ -12,6 +12,8 @@ In the terms of styles, I decided to use SCSS for application styles architectur
 
 For displaying, managing and formatting dates I used `dayjs` library, which is great and it offers huge support for dates & dates operations while maintaing a small size (compared to )
 
+In addition I wrote dozen of unit tests `(32)` for most of my components. As my testing knowledge is not good enough, please be understanding.
+
 The most important components are part of `BaseCalendar directory`. List of all BaseCalendar components with small description:
 
 - **BaseCalendarDay** - Part of the BaseCalendar components. BaseCalendarDay does have very basic logic. Its usability is related to `@click events` and for `coloring the dates based on various props`.
@@ -30,9 +32,8 @@ The most important components are part of `BaseCalendar directory`. List of all 
     
   - **days()** - Returns all days of current/prev/next months in the format of 35 days (if is possible). This computed getter is based on 3 smaller `(nextMonthDays, prevMonthDays, currentMonthDays)`
     
-  
-  Also what is important, BaseCalendar component has click `outside/ESC keypress support`.
-  
+
+Also what is important, BaseCalendar component has click `outside/ESC keypress support`.
 
 Also I created few `Base` components for UI & architecture purposes. List of all base/reusable components (excluded `BaseCalendar`) with small description:
 
@@ -84,8 +85,6 @@ npm start
 yarn serve
 ```
 
-###
-
 ### Build Prod Version
 
 ```
@@ -93,14 +92,15 @@ npm run build
 yarn build
 ```
 
-
 ### Run your unit tests
+
 ```
 npm run test:unit
 yarn test:unit
 ```
 
 ### Lints and fixes files
+
 ```
 npm run lint
 yarn lint
