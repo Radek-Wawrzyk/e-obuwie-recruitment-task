@@ -1,4 +1,4 @@
-# Eobuwie Front End Recruitment Task
+# Eobuwie Front End Recruitment Task
 
 Live version - https://eobuwie-recruitment-task.netlify.app/
 
