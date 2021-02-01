@@ -1,0 +1,11 @@
+.fade {
+  will-change: opacity;
+
+  &-enter-active, &-leave-active {
+    transition: all $time ease-out;
+  }
+
+  &-enter, &-leave-to {
+    opacity: 0;
+  }
+}

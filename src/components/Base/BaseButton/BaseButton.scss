@@ -1,0 +1,66 @@
+.base-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  min-height: 65px;
+  min-width: 150px;
+  border-radius: 0.5rem;
+  transition: all $time;
+  outline: none;
+  overflow: hidden;
+
+  &__text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 600;
+    color: inherit;
+  }
+
+  &__icon {
+    width: 1.5rem;
+    height: auto;
+  }
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+
+  &--primary {
+    background: $brand-primary;
+    color: $text-color--accent;
+
+    &:hover, &:focus {
+      background: $brand-primary--pale;
+    }
+  }
+
+  &--icon {
+    width: auto;
+    min-width: auto;
+    min-height: auto;
+    padding: 0.5rem;
+  }
+
+  &--disabled {
+    pointer-events: none;
+    background: #dadada;
+  }
+
+  &--full-size {
+    width: 100%;
+  }
+
+  &--outline {
+    border: 2px solid $text-color;
+  }
+}

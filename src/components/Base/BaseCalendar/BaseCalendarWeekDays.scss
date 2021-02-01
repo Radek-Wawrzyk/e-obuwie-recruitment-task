@@ -1,0 +1,15 @@
+.base-calendar-week-days {
+  position: relative;
+  grid-template-columns: repeat(7, 1fr);
+  display: grid;
+  grid-gap: 1px;
+  height: 3rem;
+
+  &__item {
+    color: $text-color--pale;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+  }
+}

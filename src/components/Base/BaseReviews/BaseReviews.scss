@@ -1,0 +1,24 @@
+.base-reviews {
+  position: relative;
+  display: flex;
+
+  &__rating {
+    display: flex;
+    align-items: center;
+    margin: 0 1rem 0 0;
+
+    &-star {
+      margin: 0 0.25rem 0 0;
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+
+  &__counter {
+    line-height: 1;
+    margin: 2px 0 0 0;
+    font-size: 0.9rem;
+  }
+}

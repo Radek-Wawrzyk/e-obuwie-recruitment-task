@@ -92,3 +92,16 @@ yarn serve
 npm run build
 yarn build
 ```
+
+
+### Run your unit tests
+```
+npm run test:unit
+yarn test:unit
+```
+
+### Lints and fixes files
+```
+npm run lint
+yarn lint
+```
